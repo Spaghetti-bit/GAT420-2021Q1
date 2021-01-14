@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 426923890}
   - component: {fileID: 426923891}
   - component: {fileID: 426923894}
+  - component: {fileID: 426923895}
   - component: {fileID: 426923893}
   - component: {fileID: 426923892}
   - component: {fileID: 426923889}
@@ -240,6 +241,7 @@ MonoBehaviour:
   maxForce: 100
   perception: {fileID: 426923894}
   behavior: {fileID: 426923893}
+  wanderBehavior: {fileID: 426923895}
 --- !u!114 &426923892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,8 +279,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
-  angle: 30
+  angle: 90
   tagName: Player
+--- !u!114 &426923895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426923886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb568bbedcfb3c246af39e202e90ad4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displacement: 5
+  radius: 10
+  distance: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class BasicAgent : MonoBehaviour
     public float maxForce = 2.0f;
     public Perception perception;
     public Behavior behavior;
+    public WanderBehavior wanderBehavior;
 
     public Vector3 Velocity { get; set; }
     public Vector3 Acceleration { get; set; }
@@ -17,9 +18,18 @@ public class BasicAgent : MonoBehaviour
     {
         Acceleration = Vector3.zero;
 
+
         GameObject[] gameObjects = perception.GetGameObjects();
-        Vector3 force = behavior.Execute(gameObjects);
-        Acceleration += force;
+        if (gameObjects.Length == 0)
+        {
+            Vector3 force = wanderBehavior.Execute(gameObjects);
+            Acceleration += force;
+        }
+        else
+        {
+            Vector3 force = behavior.Execute(gameObjects);
+            Acceleration += force;
+        }
 
         Velocity += Acceleration * Time.deltaTime;
         Velocity = Vector3.ClampMagnitude(Velocity, maxSpeed);
