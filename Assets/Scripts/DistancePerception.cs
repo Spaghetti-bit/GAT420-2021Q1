@@ -23,7 +23,7 @@ public class DistancePerception : Perception
 
         foreach(GameObject gameObject in gameObjects)
         {
-            if (gameObject == this) continue;
+            if (gameObject == this.gameObject) continue;
 
             float d = Vector3.Distance(transform.position, gameObject.transform.position);
             if (d <= maxDistance)

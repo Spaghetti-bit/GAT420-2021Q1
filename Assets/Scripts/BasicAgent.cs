@@ -7,7 +7,8 @@ public class BasicAgent : MonoBehaviour
     public float maxSpeed = 2.0f;
     public float maxForce = 2.0f;
     public Perception perception;
-    public Behavior behavior;
+    //public Behavior behavior;
+    public Behavior[] behaviors;
     public WanderBehavior wanderBehavior;
 
     public Vector3 Velocity { get; set; }
@@ -27,8 +28,11 @@ public class BasicAgent : MonoBehaviour
         }
         else
         {
-            Vector3 force = behavior.Execute(gameObjects);
-            Acceleration += force;
+            foreach(Behavior behavior in behaviors)
+            {
+                Vector3 force = behavior.Execute(gameObjects) * behavior.strength;
+                Acceleration += force;
+            }
         }
 
         Velocity += Acceleration * Time.deltaTime;
